@@ -61,7 +61,10 @@ namespace Arduino_Dimmer
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _arduinoPort.Close();
+            if (_status == ArduinoStatus.Connected)
+            {
+                _arduinoPort.Close();
+            }
         }
 
         private void btDisconnect_Click(object sender, EventArgs e)
